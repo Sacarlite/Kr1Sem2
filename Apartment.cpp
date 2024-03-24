@@ -6,15 +6,15 @@ Apartment::Apartment(std::string adress, int floor, int roomCount, double area)/
 {
 }
 
-void Apartment::SetAdress(std::string adress)
+void Apartment::SetAdress(std::string adress)//Установка поля адресс пользовательскими данными
 {
 	_adress = adress;
 }
-std::string Apartment::GetAdress()
+std::string Apartment::GetAdress()//Получение поля адресс
 {
 	return _adress;
 }
-void Apartment::ShowAdress()
+void Apartment::ShowAdress()//Вывод на консоль поля адресс
 {
 	std::cout << _adress << std::endl;
 }

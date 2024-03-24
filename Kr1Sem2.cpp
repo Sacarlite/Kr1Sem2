@@ -1,7 +1,7 @@
 ﻿#include <iostream>//Библеотека ввода и вывода
 #include <windows.h>//Библеотека ответственная за русскую локализацию консоли
 #include <conio.h>//Библеотека ответственная за функцию getch
-#include <vector>//Библеотека подключения вектора ПОЧИТАЙ https://metanit.com/cpp/tutorial/7.2.php
+#include <vector>//Библеотека подключения вектора
 #include "Apartment.h"//Подключение HeaderFile с классом Apartment
 #include "MainMenu.h"//Подключение HeaderFile с Enum-меню
 #include "Checks.h"//Подключение HeaderFile с проверками пользовательского ввода

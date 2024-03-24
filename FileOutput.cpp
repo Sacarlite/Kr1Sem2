@@ -4,6 +4,7 @@
 #include "Checks.h"//Подключение HeaderFile с обработкой ошибок пользовательского ввода
 #include "MainMenu.h"//Подключение HeaderFile с Enum menu
 #include "PersonalInterface.h"//Подключение HeaderFile с пользовательским интерфейсом
+#include <filesystem>//Подключение библеотеки для проверки состояния фаила
 class FileWriteException//Пользовательский класс ошибок фаилового взаимодействия
 {
 public:
@@ -51,11 +52,22 @@ void FileOutput(std::vector<Apartment> apartments)
 				std::cout << "Не верное разрешение у файла.Повторитие попытку. "<<std::endl;
 				continue;
 			}
+			try
+			{
+				std::filesystem::is_regular_file(fileName);//Проверка на системные фаилы
+
+			}
+			catch (const std::exception&)
+			{
+				throw FileWriteException("Невозможно записать данные в файл.Повторите попытку.");//Выброс пользовательской ошибки фаилового вывода
+
+			}
 			out2.open(fileName);//Попытка открытия фаила
 			std::cout << "Фаил с таким именем уже существует" << std::endl;
 			ShowOutputChoise();//Функция вывода на консоль выбора файла
 			userChoice = GetChoise();//Ввод пользовательского выбора
 			if (userChoice == Yes) {
+				
 				out2.close();//Закрытия потока чтения из фаила
 				WriteApartments(apartments, fileName);//Функция записи в фаил
 				std::cout << "Данные успешно сохранены" << std::endl;
@@ -71,11 +83,12 @@ void FileOutput(std::vector<Apartment> apartments)
 				WriteApartments(apartments, fileName);//Функция записи в фаил
 				break;
 			}
-			
-			catch (const FileWriteException err) {//Обработка ошибки взаимодействия с фаилом
+			catch ( FileWriteException err) {//Обработка ошибки взаимодействия с фаилом
 				std::cout << err.getMessage() << std::endl;//Вывод сообщения об ошибки
-				continue;
 			}
+		}
+		catch (FileWriteException err) {//Обработка ошибки взаимодействия с фаилом
+			std::cout << err.getMessage() << std::endl;//Вывод сообщения об ошибки
 		}
 
 	}
