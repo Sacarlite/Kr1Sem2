@@ -54,7 +54,7 @@ void FileOutput(std::vector<Apartment> apartments)
 			}
 			try
 			{
-				std::filesystem::is_regular_file(fileName);//Проверка на системные фаилы
+				auto r=std::filesystem::is_regular_file(fileName);//Проверка на системные фаилы
 
 			}
 			catch (const std::exception&)

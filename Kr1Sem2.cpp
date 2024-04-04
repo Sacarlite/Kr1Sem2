@@ -44,19 +44,29 @@ int main()
 				FileOutput(apartments);//Сохранение введёных апартаментов в файл
 			}
 		}
+		int roomCount = 0;
+		std::tuple<int, int> floorRange;
+		double area = 0.0;
 			do {
 				ShowMenu();//Меню алгоритмов
 				userChoice = SetMenuPoint();//Выбор пункта меню
 				switch (userChoice) {//switch выбора метода выборки
 				case SamplingByRoomCount://Выборка по количеству комнат
-					sortedApartments = SamplingApartmentsByRoomCount(apartments);//Заполнение вектора выбранными квартирами
+					std::cout << "Введите количество комнат:" << std::endl;
+					roomCount = GetPositiveIntMoreThen0();//Ввод количества квартир
+					sortedApartments = SamplingApartmentsByRoomCount(apartments, roomCount);//Заполнение вектора выбранными квартирами
 					break;
 				case SamplingByRoomCountAndFloorGap://Выборка по кол-ву квартир и положения на этаже в заданом промежутке
-					sortedApartments = SamplingApartmentsByRoomCountAndFloorGap(apartments);//Заполнение вектора выбранными квартирами
+					std::cout << "Введите количество комнат:" << std::endl;
+					roomCount = GetPositiveIntMoreThen0();//Ввод количества квартир
+					floorRange = GetFloorRange();//Ввод рассматриваемого диапазона
+					sortedApartments = SamplingApartmentsByRoomCountAndFloorGap(apartments, roomCount, floorRange);//Заполнение вектора выбранными квартирами
 					break;
 					
 				case SamplingByApartmentArea://Выборка по площади квартир
-					sortedApartments = SamplingApartmentsByArea(apartments);//Заполнение вектора выбранными квартирами
+					std::cout << "Введите площадь:" << std::endl;
+					area = GetPositiveDoubleMoreThen0();//Ввод площади квартир
+					sortedApartments = SamplingApartmentsByArea(apartments,area);//Заполнение вектора выбранными квартирами
 					break;
 				}
 				//В случае если массив пуст

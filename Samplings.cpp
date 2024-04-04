@@ -3,10 +3,8 @@
 #include <iostream>//Подключение библеотеки ввода и вывода
 #include <tuple>//Подключение библеотеки кортежей
 
-std::vector<Apartment> SamplingApartmentsByRoomCount(std::vector<Apartment> apartments)//Выборка по кол-ву квартир
+std::vector<Apartment> SamplingApartmentsByRoomCount(std::vector<Apartment> apartments, int roomCount)//Выборка по кол-ву квартир
 {
-	std::cout << "Введите количество комнат:" << std::endl;
-	int roomCount = GetPositiveIntMoreThen0();//Ввод количества квартир
 	std::vector<Apartment> sampledApartments;//Объявления вектора выбранных объектов apartment
 	for (auto i = apartments.begin(); i < apartments.end(); ++i)//Перебор вектора квартир при помощи итератора
 	{
@@ -19,11 +17,9 @@ std::vector<Apartment> SamplingApartmentsByRoomCount(std::vector<Apartment> apar
 
 }
 
-std::vector<Apartment> SamplingApartmentsByRoomCountAndFloorGap(std::vector<Apartment> apartments)//Выборка по кол-ву квартир и положения на этаже в заданом промежутке
+std::vector<Apartment> SamplingApartmentsByRoomCountAndFloorGap(std::vector<Apartment> apartments, int roomCount, std::tuple<int, int> floorRange)//Выборка по кол-ву квартир и положения на этаже в заданом промежутке
 {
-	std::cout << "Введите количество комнат:" << std::endl;
-	int roomCount = GetPositiveIntMoreThen0();//Ввод количества квартир
-	std::tuple<int, int> floorRange = GetFloorRange();//Ввод рассматриваемого диапазона
+	
 	std::vector<Apartment> sampledApartments;//Объявления вектора выбранных объектов apartment
 	for (auto i = apartments.begin(); i < apartments.end(); ++i)//Перебор вектора квартир при помощи итератора
 	{
@@ -35,10 +31,8 @@ std::vector<Apartment> SamplingApartmentsByRoomCountAndFloorGap(std::vector<Apar
 	return sampledApartments;
 }
 
-std::vector<Apartment> SamplingApartmentsByArea(std::vector<Apartment> apartments)//Выборка по площади
+std::vector<Apartment> SamplingApartmentsByArea(std::vector<Apartment> apartments,double area)//Выборка по площади
 {
-	std::cout << "Введите площадь:" << std::endl;
-	double area = GetPositiveDoubleMoreThen0();//Ввод площади квартир
 	std::vector<Apartment> sampledApartments;//Объявления вектора выбранных объектов apartment
 	for (auto i = apartments.begin(); i < apartments.end(); ++i)//Перебор вектора квартир при помощи итератора
 	{
