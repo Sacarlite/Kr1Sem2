@@ -1,8 +1,10 @@
 #include "FileInput.h"//Подключение HeaderFile с вводом данных из фаила
-#include <fstream>//Библеотека ввода и вывода из фаила
-#include <iostream>//Библеотека ввода и вывода
+#include <fstream>//Библиотека ввода и вывода из фаила
+#include <iostream>//Библиотека ввода и вывода
 #include "CheckExeption.h"//Подключение HeaderFile с пользовательским классом ошибок ввода
 #include "Checks.h"//Подключение HeaderFile с обработкой ошибок пользовательского ввода
+#include <filesystem>//Подключение библеотеки для проверки состояния фаила
+
 std::vector<Apartment> FileDataInput()//Функция ввода списка квартир из фаила
 {
 	std::vector<Apartment> apartments;//Объявления вектора объектов apartment
@@ -20,8 +22,12 @@ std::vector<Apartment> FileDataInput()//Функция ввода списка квартир из фаила
 				std::cout << "Не верное разрешение у файла.Повторитие попытку. " << std::endl;
 				continue;
 			}
-			file.open(fileName);//Открытия фаила для чтения
-			std::cout << "Фаил открыт успешно. " << std::endl;
+			if (std::filesystem::is_regular_file(fileName))//Проверка на системные фаилы
+			{
+				std::cout << "Фаил открыт успешно. " << std::endl;
+				file.open(fileName);//Открытия фаила для чтения
+			}
+			
 		}
 		catch (const std::exception&)//Обработка ошибки при чтении из фаила
 		{
@@ -46,7 +52,7 @@ std::vector<Apartment> FileDataInput()//Функция ввода списка квартир из фаила
 
 		}
 		catch (const std::exception) {//Обработка ошибки
-			std::cout << " Произошла ошибка при чтении информации .Повторите попытку:" << std::endl;
+			std::cout << " Произошла ошибка при чтении информации. Повторите попытку:" << std::endl;
 			file.close();
 			continue;
 		}

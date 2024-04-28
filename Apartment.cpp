@@ -1,5 +1,5 @@
 ﻿#include "Apartment.h"//Подключение HeaderFile с классом Apartment
-#include <iostream>//Подключение библеотеки ввода и вывода
+#include <iostream>//Подключение библиотеки ввода и вывода
 /*Все коментарии прописаны в Apartment.h*/
 Apartment::Apartment(std::string adress, int floor, int roomCount, double area)//Конструктор класса apartment
 	:_adress(adress),_floor(floor),_roomCount(roomCount),_area(area)

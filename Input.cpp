@@ -1,5 +1,5 @@
 ﻿#include "Input.h"//Подключение HeaderFile с вводом данных с консоли
-#include <iostream>//Библеотека ввода и вывода
+#include <iostream>//Библиотека ввода и вывода
 #include "Checks.h"//Подключение HeaderFile с проверками пользовательского ввода
 #include "MainMenu.h"//Подключение HeaderFile с Enum menu
 

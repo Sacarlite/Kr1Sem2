@@ -1,5 +1,5 @@
 #pragma once
-#include <string>//Подключение библеотеки строк
+#include <string>//Подключение библиотеки строк
 
 class CheckException//Класс ошибок пользовательского ввода
 {

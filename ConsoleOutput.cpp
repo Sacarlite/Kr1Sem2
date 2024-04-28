@@ -1,7 +1,7 @@
-#include <vector>//Библеотека подключения вектора
+#include <vector>//Библиотека подключения вектора
 #include "Apartment.h"//Подключение HeaderFile с классом Apartment
 #include "ConsoleOutput.h"//Подключение HeaderFile с выводом данных на консоль
-#include <iostream>//Библеотека ввода и вывода
+#include <iostream>//Библиотека ввода и вывода
 
 
 void ConsoleOutput(std::vector<Apartment> apartments)

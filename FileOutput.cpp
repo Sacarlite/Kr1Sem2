@@ -1,6 +1,6 @@
 #include "FileOutput.h"//Подключение HeaderFile с выводом данных в фаил
-#include <fstream>//Библеотека ввода и вывода из фаила
-#include <iostream>//Библеотека ввода и вывода
+#include <fstream>//Библиотека ввода и вывода из фаила
+#include <iostream>//Библиотека ввода и вывода
 #include "Checks.h"//Подключение HeaderFile с обработкой ошибок пользовательского ввода
 #include "MainMenu.h"//Подключение HeaderFile с Enum menu
 #include "PersonalInterface.h"//Подключение HeaderFile с пользовательским интерфейсом
@@ -54,8 +54,10 @@ void FileOutput(std::vector<Apartment> apartments)
 			}
 			try
 			{
-				auto r=std::filesystem::is_regular_file(fileName);//Проверка на системные фаилы
-
+				if (std::filesystem::is_regular_file(fileName))//Проверка на системные фаилы
+				{
+					std::cout << "Фаил с таким именем уже существует" << std::endl;
+				}
 			}
 			catch (const std::exception&)
 			{
@@ -63,14 +65,12 @@ void FileOutput(std::vector<Apartment> apartments)
 
 			}
 			out2.open(fileName);//Попытка открытия фаила
-			std::cout << "Фаил с таким именем уже существует" << std::endl;
 			ShowOutputChoise();//Функция вывода на консоль выбора файла
 			userChoice = GetChoise();//Ввод пользовательского выбора
 			if (userChoice == Yes) {
 				
 				out2.close();//Закрытия потока чтения из фаила
 				WriteApartments(apartments, fileName);//Функция записи в фаил
-				std::cout << "Данные успешно сохранены" << std::endl;
 			}
 			else {
 				out2.close();//Закрытия потока чтения из фаила

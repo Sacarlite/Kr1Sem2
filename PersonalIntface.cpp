@@ -1,4 +1,4 @@
-﻿#include <iostream>//Подключение библеотеки ввода и вывода
+﻿#include <iostream>//Подключение библиотеки ввода и вывода
 #include "PersonalInterface.h"
 
 void ShowMenu()

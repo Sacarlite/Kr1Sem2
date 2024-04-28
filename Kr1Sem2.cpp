@@ -1,7 +1,7 @@
-﻿#include <iostream>//Библеотека ввода и вывода
-#include <windows.h>//Библеотека ответственная за русскую локализацию консоли
-#include <conio.h>//Библеотека ответственная за функцию getch
-#include <vector>//Библеотека подключения вектора
+﻿#include <iostream>//Библиотека ввода и вывода
+#include <windows.h>//Библиотека ответственная за русскую локализацию консоли
+#include <conio.h>//Библиотека ответственная за функцию getch
+#include <vector>//Библиотека подключения вектора
 #include "Apartment.h"//Подключение HeaderFile с классом Apartment
 #include "MainMenu.h"//Подключение HeaderFile с Enum-меню
 #include "Checks.h"//Подключение HeaderFile с проверками пользовательского ввода
@@ -56,7 +56,7 @@ int main()
 					roomCount = GetPositiveIntMoreThen0();//Ввод количества квартир
 					sortedApartments = SamplingApartmentsByRoomCount(apartments, roomCount);//Заполнение вектора выбранными квартирами
 					break;
-				case SamplingByRoomCountAndFloorGap://Выборка по кол-ву квартир и положения на этаже в заданом промежутке
+				case SamplingByRoomCountAndFloorGap://Выборка по кол-ву комнат и положения на этаже в заданом промежутке
 					std::cout << "Введите количество комнат:" << std::endl;
 					roomCount = GetPositiveIntMoreThen0();//Ввод количества квартир
 					floorRange = GetFloorRange();//Ввод рассматриваемого диапазона
